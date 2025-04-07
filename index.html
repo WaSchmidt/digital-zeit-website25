@@ -22,12 +22,6 @@
     }
 
     header {
-      background-color: var(--weiß);
-      padding: 20px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 2px solid var(--grau);
       position: sticky;
       top: 0;
       z-index: 1000;
@@ -36,11 +30,13 @@
     nav {
       display: flex;
       gap: 20px;
+      background-color: var(--schwarz);
+      padding: 10px 40px;
     }
 
     nav a {
       text-decoration: none;
-      color: var(--grau);
+      color: var(--weiß);
       font-weight: 500;
     }
 
@@ -219,17 +215,46 @@
         transform: translateY(0);
       }
     }
-  </style>
+  .topbar {
+      background-color: var(--weiß);
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid var(--grau);
+    }
+
+nav {
+      display: flex;
+      gap: 20px;
+      background-color: var(--schwarz);
+      padding: 10px 40px;
+    }
+
+nav a {
+      text-decoration: none;
+      color: var(--weiß);
+      font-weight: 500;
+    }
+
+nav a:hover {
+      color: var(--magenta);
+    }
+
+.logo img {
+      height: 50px;
+    }
+
+
 </head>
 <body>
   <header>
-    <nav>
-      <a href="#">Produkte</a>
-      <a href="#">Service</a>
-      <a href="#">Unternehmen</a>
-      <a href="#">Karriere</a>
-      <a href="#kontakt">Kontakt</a>
-    </nav>
+    <div class="topbar">
+      <div class="logo">
+        <img src="img/40Jahre_Logo_RGB.svg" alt="digital ZEIT Logo" />
+      </div>
+    </div>
+    <nav></nav>
     <div class="logo">
       <img src="img/40Jahre_Logo_RGB.svg" alt="digital ZEIT Logo" />
     </div>
