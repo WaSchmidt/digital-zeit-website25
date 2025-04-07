@@ -89,7 +89,9 @@
       max-width: 100%;
       background: rgba(0, 0, 0, 0.65);
       clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
-      animation: fadeSlideIn 1s ease;
+      transform: translateX(100%);
+      opacity: 0;
+      transition: all 0.8s ease;
     }
 
     .hero-content h1 {
@@ -329,9 +331,10 @@
     const slideInterval = setInterval(() => {
       slides[current].classList.remove('active');
       slides[current].style.transform = 'translateX(-100%)';
-      document.querySelector('.hero-content').style.animation = 'none';
-      void document.querySelector('.hero-content').offsetWidth;
-      document.querySelector('.hero-content').style.animation = 'fadeSlideIn 1s ease';
+      document.querySelector('.hero-content').style.transform = 'translateX(100%)';
+      document.querySelector('.hero-content').style.opacity = '0';
+      document.querySelector('.hero-content').style.transform = 'translateX(0)';
+      document.querySelector('.hero-content').style.opacity = '1';
       dotsContainer.children[current].classList.remove("active");
       current = (current + 1) % slides.length;
       slides[current].style.transform = 'translateX(0)';
