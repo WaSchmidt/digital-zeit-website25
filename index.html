@@ -13,12 +13,14 @@
       --hellgrau: #f4f4f4;
       --schwarz: #000000;
     }
+
     body {
       font-family: "Univers", "Segoe UI", sans-serif;
       background-color: var(--weiß);
       color: var(--grau);
       margin: 0;
     }
+
     header {
       background-color: var(--weiß);
       padding: 20px 40px;
@@ -30,21 +32,26 @@
       top: 0;
       z-index: 1000;
     }
+
     nav {
       display: flex;
       gap: 20px;
     }
+
     nav a {
       text-decoration: none;
       color: var(--grau);
       font-weight: 500;
     }
+
     nav a:hover {
       color: var(--magenta);
     }
+
     .logo img {
       height: 50px;
     }
+
     .hero {
       position: relative;
       height: 100vh;
@@ -53,6 +60,7 @@
       align-items: center;
       color: var(--weiß);
     }
+
     .hero-slide {
       position: absolute;
       width: 100%;
@@ -62,10 +70,12 @@
       opacity: 0;
       transition: opacity 1s ease-in-out;
     }
+
     .hero-slide.active {
       opacity: 1;
       z-index: 1;
     }
+
     .hero-content {
       position: relative;
       z-index: 2;
@@ -75,13 +85,16 @@
       margin-left: 60px;
       clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
     }
+
     .hero-content h1 {
       font-size: 2.4em;
       margin-bottom: 0.5em;
     }
+
     .hero-content p {
       font-size: 1.2em;
     }
+
     .eyecatcher {
       display: flex;
       justify-content: space-around;
@@ -89,63 +102,76 @@
       padding: 40px 20px;
       background-color: var(--weiß);
     }
+
     .eyecatcher div {
       flex: 1;
       padding: 20px;
     }
+
     .eyecatcher h3 {
       font-size: 2em;
       color: var(--magenta);
     }
+
     .eyecatcher p {
       font-size: 1.1em;
       color: var(--grau);
     }
+
     .referenzen {
       padding: 60px 40px;
       background-color: var(--hellgrau);
       text-align: center;
     }
+
     .referenzen h2 {
       font-size: 2.4em;
       color: var(--magenta);
       margin-bottom: 40px;
     }
+
     .referenzen-logos {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 20px;
     }
+
     .referenzen-logos img {
       width: 120px;
       height: auto;
       object-fit: contain;
     }
+
     footer {
       background-color: var(--schwarz);
       text-align: center;
       padding: 20px;
     }
+
     footer a {
       margin: 0 10px;
       color: var(--weiß);
       text-decoration: none;
       font-size: 1.4em;
     }
+
     @media (max-width: 768px) {
       header {
         flex-direction: column-reverse;
         align-items: flex-start;
       }
+
       nav {
         flex-direction: column;
         gap: 10px;
         margin-bottom: 10px;
       }
+
       .eyecatcher {
         flex-direction: column;
       }
+
       .hero-content {
         margin: 0 auto;
         clip-path: none;
@@ -154,6 +180,120 @@
   </style>
 </head>
 <body>
-<!-- Der Body wird beim nächsten Schritt eingefügt -->
+
+  <header>
+    <nav>
+      <a href="#">Produkte</a>
+      <a href="#">Service</a>
+      <a href="#">Unternehmen</a>
+      <a href="#">Karriere</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+    <div class="logo">
+      <img src="img/40Jahre_Logo_RGB.svg" alt="digital ZEIT Logo" />
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-slide active" style="background-image: url('img/0-Header-Zeiterfassung.jpg');"></div>
+    <div class="hero-slide" style="background-image: url('img/0-Header-Zutrittskontrolle.jpg');"></div>
+    <div class="hero-slide" style="background-image: url('img/0-Header-Betriebsdatenerfassung.jpg');"></div>
+    <div class="hero-slide" style="background-image: url('img/0-Header-Projektzeiterfassung-1.jpg');"></div>
+    <div class="hero-slide" style="background-image: url('img/0-Header-Personaleinsatzplanung.jpg');"></div>
+    <div class="hero-content" id="heroText">
+  <h1>Ihr Partner für digitale Erfassungslösungen.</h1>
+  <p>Ob Zeiterfassung, Betriebsdatenerfassung oder Maschinendaten – unsere modularen Systeme machen Digitalisierung einfach, sicher und leistungsstark.</p>
+  <a href="#" id="ctaBtn" style="display:inline-block;margin-top:20px;padding:10px 20px;background-color:#a90052;color:#fff;text-decoration:none;border-radius:5px;font-weight:bold;">Mehr erfahren</a>
+</div>
+  </section>
+
+  <section class="eyecatcher">
+    <div>
+      <h3>40+</h3>
+      <p>Jahre Erfahrung</p>
+    </div>
+    <div>
+      <h3>1300+</h3>
+      <p>aktive Kunden</p>
+    </div>
+    <div>
+      <h3>40</h3>
+      <p>Mitarbeiter</p>
+    </div>
+  </section>
+
+  <section class="referenzen">
+    <h2>Referenzen</h2>
+    <div class="referenzen-logos">
+      <img src="img/Burkhardt.jpg" alt="Burkhardt Fruchtsäfte" />
+      <img src="img/Noerpel.jpg" alt="Noerpel" />
+      <img src="img/Boerlind.png" alt="Annemarie Börlind" />
+      <img src="img/Settele.jpg" alt="Settele" />
+      <img src="img/Roma.jpg" alt="Roma" />
+      <img src="img/Halder.jpg" alt="Halder" />
+      <img src="img/Aviko.jpg" alt="Aviko" />
+      <img src="img/Eberle.jpg" alt="Eberle" />
+    </div>
+  </section>
+
+  <footer id="kontakt">
+    <a href="#" title="LinkedIn">👤</a>
+    <a href="#" title="Xing">👥</a>
+    <a href="#" title="YouTube">🎥</a>
+  </footer>
+
+  <script>
+    const slides = document.querySelectorAll('.hero-slide');
+    let current = 0;
+
+    setInterval(() => {
+      slides[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+    }, 5000);
+  // Text- und Button-Inhalte für jeden Slide
+const heroTexts = [
+  {
+    title: "Zeiterfassung neu gedacht.",
+    desc: "Digitale Lösungen für transparente und effiziente Arbeitszeiterfassung.",
+    cta: "Zeiterfassung entdecken"
+  },
+  {
+    title: "Zutritt sicher und einfach steuern.",
+    desc: "Smarte Zutrittskontrolle mit Karte, Transponder oder Smartphone.",
+    cta: "Zutrittssysteme ansehen"
+  },
+  {
+    title: "Maschinendaten effizient erfassen.",
+    desc: "Unsere BDE-Systeme verbinden Mensch und Maschine intelligent.",
+    cta: "BDE kennenlernen"
+  },
+  {
+    title: "Projektzeiten intelligent managen.",
+    desc: "Erfassen Sie Zeiten projektbezogen – transparent & nachvollziehbar.",
+    cta: "Projektzeiterfassung starten"
+  },
+  {
+    title: "Planung, die sich anpasst.",
+    desc: "Digitale Schicht- und Einsatzplanung für mehr Flexibilität.",
+    cta: "Einsatzplanung optimieren"
+  }
+];
+
+const titleEl = document.querySelector("#heroText h1");
+const descEl = document.querySelector("#heroText p");
+const btnEl = document.querySelector("#ctaBtn");
+
+setInterval(() => {
+  slides[current].classList.remove('active');
+  current = (current + 1) % slides.length;
+  slides[current].classList.add('active');
+
+  titleEl.textContent = heroTexts[current].title;
+  descEl.textContent = heroTexts[current].desc;
+  btnEl.textContent = heroTexts[current].cta;
+}, 5000);
+</script>
+
 </body>
 </html>
