@@ -95,9 +95,8 @@
       max-width: 100%;
       background: rgba(0, 0, 0, 0.65);
       clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
-      transform: none;
-      opacity: 1;
-      transition: none;
+      opacity: 0;
+      transition: opacity 0.5s ease;
     }
 
     .hero-content h1 {
@@ -316,11 +315,15 @@
     const slideInterval = setInterval(() => {
       slides[current].classList.remove('active');
       slides[current].style.transform = 'translateX(-100%)';
+      document.querySelector('.hero-content').style.opacity = '0';
       
       dotsContainer.children[current].classList.remove("active");
       current = (current + 1) % slides.length;
       slides[current].style.transform = 'translateX(0)';
       slides[current].classList.add('active');
+      setTimeout(() => {
+        document.querySelector('.hero-content').style.opacity = '1';
+      }, 300);
       dotsContainer.children[current].classList.add("active");
       titleEl.textContent = heroTexts[current].title;
       descEl.textContent = heroTexts[current].desc;
