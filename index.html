@@ -52,14 +52,7 @@
       height: 50px;
     }
 
-    .hero {
-      position: relative;
-      height: 100vh;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      color: var(--weiß);
-    }
+    height: 75vh;
 
     .hero-slide {
       position: absolute;
@@ -76,15 +69,7 @@
       z-index: 1;
     }
 
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 500px;
-      background: rgba(0, 0, 0, 0.65);
-      padding: 40px;
-      margin-left: 60px;
-      clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
-    }
+    padding: 80px 60px;
 
     .hero-content h1 {
       font-size: 2.4em;
@@ -177,7 +162,22 @@
         clip-path: none;
       }
     }
-  </style>
+      @keyframes fadeSlideIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-content {
+      animation: fadeSlideIn 1s ease;
+    }
+
+</style>
 </head>
 <body>
 
@@ -203,7 +203,7 @@
     <div class="hero-content" id="heroText">
   <h1>Ihr Partner für digitale Erfassungslösungen.</h1>
   <p>Ob Zeiterfassung, Betriebsdatenerfassung oder Maschinendaten – unsere modularen Systeme machen Digitalisierung einfach, sicher und leistungsstark.</p>
-  <a href="#" id="ctaBtn" style="display:inline-block;margin-top:20px;padding:10px 20px;background-color:#a90052;color:#fff;text-decoration:none;border-radius:5px;font-weight:bold;">Mehr erfahren</a>
+  <a href="#" id="ctaBtn" style="display:inline-block;margin-top:30px;padding:18px 36px;font-size:1.1em;background-color:#a90052;color:#fff;text-decoration:none;border-radius:8px;font-weight:bold">Mehr erfahren</a>
 </div>
   </section>
 
@@ -247,7 +247,10 @@
     let current = 0;
 
     setInterval(() => {
-      slides[current].classList.remove('active');
+  slides[current].classList.remove('active');
+  document.querySelector('.hero-content').style.animation = 'none';
+  void document.querySelector('.hero-content').offsetWidth;
+  document.querySelector('.hero-content').style.animation = 'fadeSlideIn 1s ease';
       current = (current + 1) % slides.length;
       slides[current].classList.add('active');
     }, 5000);
