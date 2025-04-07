@@ -96,6 +96,29 @@
       font-size: 1.2em;
     }
 
+    .hero-dots {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      z-index: 3;
+    }
+
+    .hero-dots span {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: rgba(169, 0, 82, 0.4);
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .hero-dots span.active {
+      background-color: #a90052;
+    }
+
     .eyecatcher {
       display: flex;
       justify-content: space-around;
@@ -178,7 +201,8 @@
         clip-path: none;
       }
     }
-      @keyframes fadeSlideIn {
+
+    @keyframes fadeSlideIn {
       from {
         opacity: 0;
         transform: translateY(30px);
@@ -188,15 +212,9 @@
         transform: translateY(0);
       }
     }
-
-    .hero-content {
-      animation: fadeSlideIn 1s ease;
-    }
-
-</style>
+  </style>
 </head>
 <body>
-
   <header>
     <nav>
       <a href="#">Produkte</a>
@@ -217,25 +235,17 @@
     <div class="hero-slide" style="background-image: url('img/0-Header-Projektzeiterfassung-1.jpg');"></div>
     <div class="hero-slide" style="background-image: url('img/0-Header-Personaleinsatzplanung.jpg');"></div>
     <div class="hero-content" id="heroText">
-  <h1>Ihr Partner für digitale Erfassungslösungen.</h1>
-  <p>Ob Zeiterfassung, Betriebsdatenerfassung oder Maschinendaten – unsere modularen Systeme machen Digitalisierung einfach, sicher und leistungsstark.</p>
-  <a href="#" id="ctaBtn" style="display:inline-block;margin-top:30px;padding:18px 36px;font-size:1.1em;background-color:#a90052;color:#fff;text-decoration:none;border-radius:8px;font-weight:bold">Mehr erfahren</a>
-</div>
+      <h1>Ihr Partner für digitale Erfassungslösungen.</h1>
+      <p>Ob Zeiterfassung, Betriebsdatenerfassung oder Maschinendaten – unsere modularen Systeme machen Digitalisierung einfach, sicher und leistungsstark.</p>
+      <a href="#" id="ctaBtn" style="display:inline-block;margin-top:30px;padding:18px 36px;font-size:1.1em;background-color:#a90052;color:#fff;text-decoration:none;border-radius:8px;font-weight:bold">Mehr erfahren</a>
+    </div>
+    <div class="hero-dots" id="heroDots"></div>
   </section>
 
   <section class="eyecatcher">
-    <div>
-      <h3>40+</h3>
-      <p>Jahre Erfahrung</p>
-    </div>
-    <div>
-      <h3>1300+</h3>
-      <p>aktive Kunden</p>
-    </div>
-    <div>
-      <h3>40</h3>
-      <p>Mitarbeiter</p>
-    </div>
+    <div><h3>40+</h3><p>Jahre Erfahrung</p></div>
+    <div><h3>1300+</h3><p>aktive Kunden</p></div>
+    <div><h3>40</h3><p>Mitarbeiter</p></div>
   </section>
 
   <section class="referenzen">
@@ -261,58 +271,69 @@
   <script>
     const slides = document.querySelectorAll('.hero-slide');
     let current = 0;
+    const heroTexts = [
+      {
+        title: "Zeiterfassung neu gedacht.",
+        desc: "Digitale Lösungen für transparente und effiziente Arbeitszeiterfassung.",
+        cta: "Zeiterfassung entdecken"
+      },
+      {
+        title: "Zutritt sicher und einfach steuern.",
+        desc: "Smarte Zutrittskontrolle mit Karte, Transponder oder Smartphone.",
+        cta: "Zutrittssysteme ansehen"
+      },
+      {
+        title: "Maschinendaten effizient erfassen.",
+        desc: "Unsere BDE-Systeme verbinden Mensch und Maschine intelligent.",
+        cta: "BDE kennenlernen"
+      },
+      {
+        title: "Projektzeiten intelligent managen.",
+        desc: "Erfassen Sie Zeiten projektbezogen – transparent & nachvollziehbar.",
+        cta: "Projektzeiterfassung starten"
+      },
+      {
+        title: "Planung, die sich anpasst.",
+        desc: "Digitale Schicht- und Einsatzplanung für mehr Flexibilität.",
+        cta: "Einsatzplanung optimieren"
+      }
+    ];
 
-    setInterval(() => {
-  slides[current].classList.remove('active');
-  document.querySelector('.hero-content').style.animation = 'none';
-  void document.querySelector('.hero-content').offsetWidth;
-  document.querySelector('.hero-content').style.animation = 'fadeSlideIn 1s ease';
+    const titleEl = document.querySelector("#heroText h1");
+    const descEl = document.querySelector("#heroText p");
+    const btnEl = document.querySelector("#ctaBtn");
+    const dotsContainer = document.getElementById("heroDots");
+
+    heroTexts.forEach((_, i) => {
+      const dot = document.createElement("span");
+      if (i === 0) dot.classList.add("active");
+      dot.addEventListener("click", () => {
+        clearInterval(slideInterval);
+        slides[current].classList.remove("active");
+        dotsContainer.children[current].classList.remove("active");
+        current = i;
+        slides[current].classList.add("active");
+        dotsContainer.children[current].classList.add("active");
+        titleEl.textContent = heroTexts[current].title;
+        descEl.textContent = heroTexts[current].desc;
+        btnEl.textContent = heroTexts[current].cta;
+      });
+      dotsContainer.appendChild(dot);
+    });
+
+    const slideInterval = setInterval(() => {
+      slides[current].classList.remove('active');
+      document.querySelector('.hero-content').style.animation = 'none';
+      void document.querySelector('.hero-content').offsetWidth;
+      document.querySelector('.hero-content').style.animation = 'fadeSlideIn 1s ease';
+      dotsContainer.children[current].classList.remove("active");
       current = (current + 1) % slides.length;
       slides[current].classList.add('active');
+      dotsContainer.children[current].classList.add("active");
+      titleEl.textContent = heroTexts[current].title;
+      descEl.textContent = heroTexts[current].desc;
+      btnEl.textContent = heroTexts[current].cta;
     }, 5000);
-  // Text- und Button-Inhalte für jeden Slide
-const heroTexts = [
-  {
-    title: "Zeiterfassung neu gedacht.",
-    desc: "Digitale Lösungen für transparente und effiziente Arbeitszeiterfassung.",
-    cta: "Zeiterfassung entdecken"
-  },
-  {
-    title: "Zutritt sicher und einfach steuern.",
-    desc: "Smarte Zutrittskontrolle mit Karte, Transponder oder Smartphone.",
-    cta: "Zutrittssysteme ansehen"
-  },
-  {
-    title: "Maschinendaten effizient erfassen.",
-    desc: "Unsere BDE-Systeme verbinden Mensch und Maschine intelligent.",
-    cta: "BDE kennenlernen"
-  },
-  {
-    title: "Projektzeiten intelligent managen.",
-    desc: "Erfassen Sie Zeiten projektbezogen – transparent & nachvollziehbar.",
-    cta: "Projektzeiterfassung starten"
-  },
-  {
-    title: "Planung, die sich anpasst.",
-    desc: "Digitale Schicht- und Einsatzplanung für mehr Flexibilität.",
-    cta: "Einsatzplanung optimieren"
-  }
-];
-
-const titleEl = document.querySelector("#heroText h1");
-const descEl = document.querySelector("#heroText p");
-const btnEl = document.querySelector("#ctaBtn");
-
-setInterval(() => {
-  slides[current].classList.remove('active');
-  current = (current + 1) % slides.length;
-  slides[current].classList.add('active');
-
-  titleEl.textContent = heroTexts[current].title;
-  descEl.textContent = heroTexts[current].desc;
-  btnEl.textContent = heroTexts[current].cta;
-}, 5000);
-</script>
-
+  </script>
 </body>
 </html>
