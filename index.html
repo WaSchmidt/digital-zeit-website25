@@ -333,8 +333,10 @@
       slides[current].style.transform = 'translateX(-100%)';
       document.querySelector('.hero-content').style.transform = 'translateX(100%)';
       document.querySelector('.hero-content').style.opacity = '0';
-      document.querySelector('.hero-content').style.transform = 'translateX(0)';
-      document.querySelector('.hero-content').style.opacity = '1';
+      setTimeout(() => {
+        document.querySelector('.hero-content').style.transform = 'translateX(0)';
+        document.querySelector('.hero-content').style.opacity = '1';
+      }, 100);
       dotsContainer.children[current].classList.remove("active");
       current = (current + 1) % slides.length;
       slides[current].style.transform = 'translateX(0)';
