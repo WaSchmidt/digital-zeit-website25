@@ -154,6 +154,58 @@
   </style>
 </head>
 <body>
-<!-- Der Body wird beim nächsten Schritt eingefügt -->
+  <header>
+    <nav>
+      <a href="#">Produkte</a>
+      <a href="#">Service</a>
+      <a href="#">Unternehmen</a>
+      <a href="#">Karriere</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+    <div class="logo">
+      <img src="img/40Jahre_Logo_RGB.svg" alt="digital ZEIT Logo" />
+    </div>
+  </header>
+  <section class="hero">
+    <div class="hero-slide active" style="background-image: url('img/hero1.jpg');"></div>
+    <div class="hero-slide" style="background-image: url('img/hero2.jpg');"></div>
+    <div class="hero-slide" style="background-image: url('img/hero3.jpg');"></div>
+    <div class="hero-content">
+      <h1>Ihr Partner für digitale Erfassungslösungen.</h1>
+      <p>Ob Zeiterfassung, Betriebsdatenerfassung oder Maschinendaten – unsere modularen Systeme machen Digitalisierung einfach, sicher und leistungsstark.</p>
+    </div>
+  </section>
+  <section class="eyecatcher">
+    <div><h3>40+</h3><p>Jahre Erfahrung</p></div>
+    <div><h3>1300+</h3><p>aktive Kunden</p></div>
+    <div><h3>40</h3><p>Mitarbeiter</p></div>
+  </section>
+  <section class="referenzen">
+    <h2>Referenzen</h2>
+    <div class="referenzen-logos">
+      <img src="img/Burkhardt.jpg" alt="Burkhardt Fruchtsäfte" />
+      <img src="img/Noerpel.jpg" alt="Noerpel" />
+      <img src="img/Boerlind.png" alt="Annemarie Börlind" />
+      <img src="img/Settele.jpg" alt="Settele" />
+      <img src="img/Roma.jpg" alt="Roma" />
+      <img src="img/Halder.jpg" alt="Halder" />
+      <img src="img/Aviko.jpg" alt="Aviko" />
+      <img src="img/Eberle.jpg" alt="Eberle" />
+    </div>
+  </section>
+  <footer id="kontakt">
+    <a href="#" title="LinkedIn">👤</a>
+    <a href="#" title="Xing">👥</a>
+    <a href="#" title="YouTube">🎥</a>
+  </footer>
+  <script>
+    const slides = document.querySelectorAll('.hero-slide');
+    let current = 0;
+    setInterval(() => {
+      slides[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+    }, 5000);
+  </script>
 </body>
 </html>
