@@ -321,9 +321,7 @@
       current = (current + 1) % slides.length;
       slides[current].style.transform = 'translateX(0)';
       slides[current].classList.add('active');
-      setTimeout(() => {
-        document.querySelector('.hero-content').style.opacity = '1';
-      }, 300);
+      document.querySelector('.hero-content').style.opacity = '1';
       dotsContainer.children[current].classList.add("active");
       titleEl.textContent = heroTexts[current].title;
       descEl.textContent = heroTexts[current].desc;
