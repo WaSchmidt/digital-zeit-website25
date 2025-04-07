@@ -61,15 +61,8 @@
       color: var(--weiß);
     }
 
-    .hero-slide {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background-size: cover;
-      background-position: center;
-      opacity: 0;
-      transition: opacity 1s ease-in-out, transform 1s ease-in-out;
-    }
+    
+  transform: translateX(100%);
 
     .hero-slide.active {
       opacity: 1;
@@ -325,14 +318,14 @@
 
     const slideInterval = setInterval(() => {
       slides[current].classList.remove('active');
-  slides[current].style.transform = 'translateX(-100%)';
+      slides[current].style.transform = 'translateX(-100%)';
       document.querySelector('.hero-content').style.animation = 'none';
       void document.querySelector('.hero-content').offsetWidth;
       document.querySelector('.hero-content').style.animation = 'fadeSlideIn 1s ease';
       dotsContainer.children[current].classList.remove("active");
       current = (current + 1) % slides.length;
       slides[current].style.transform = 'translateX(0)';
-  slides[current].classList.add('active');
+      slides[current].classList.add('active');
       dotsContainer.children[current].classList.add("active");
       titleEl.textContent = heroTexts[current].title;
       descEl.textContent = heroTexts[current].desc;
