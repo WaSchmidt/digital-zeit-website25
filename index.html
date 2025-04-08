@@ -84,26 +84,6 @@
       transform: translateX(0);
     }
 
-    .hero-content {
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 0 80px;
-      background: rgba(0, 0, 0, 0.65);
-      opacity: 1;
-      transition: opacity 0.5s ease;
-    }
-
-    .hero-content h1 {
-      font-size: 3em;
-      margin-bottom: 0.6em;
-    }
-
-    .hero-content p {
-      font-size: 1.3em;
-    }
-
     .hero-dots {
       position: absolute;
       bottom: 20px;
@@ -134,33 +114,24 @@
       </div>
     </div>
     <nav>
-      
-    </div>
+      <a href="#">Produkte</a>
+      <a href="#">Service</a>
+      <a href="#">Unternehmen</a>
+      <a href="#">Karriere</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-slide active" style="background-image: url('img/0-Header-Zeiterfassung.jpg');"></div>
+    <div class="hero-slide" style="background-image: url('img/0-Header-Zutrittskontrolle.jpg');"></div>
+    <div class="hero-slide" style="background-image: url('img/0-Header-Betriebsdatenerfassung.jpg');"></div>
+    <div class="hero-slide" style="background-image: url('img/0-Header-Projektzeiterfassung-1.jpg');"></div>
+    <div class="hero-slide" style="background-image: url('img/0-Header-Personaleinsatzplanung.jpg');"></div>
+
     <div class="hero-dots" id="heroDots"></div>
   </section>
 
-  <script>
-    const slides = document.querySelectorAll('.hero-slide');
-    const heroContent = document.querySelector('.hero-content');
-    let current = 0;
-
-    function hideContent() {
-      heroContent.style.opacity = '0';
-    }
-
-    function showContent() {
-      heroContent.style.opacity = '1';
-    }
-
-    const slideInterval = setInterval(() => {
-      slides[current].classList.remove('active');
-      hideContent();
-
-      current = (current + 1) % slides.length;
-      slides[current].classList.add('active');
-
-      setTimeout(showContent, 500);
-    }, 5000);
-  </script>
+  <script src="slider.js"></script>
 </body>
 </html>
